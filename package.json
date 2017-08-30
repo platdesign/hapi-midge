@@ -1,0 +1,27 @@
+{
+  "name": "hapi-midge",
+  "description": "hapi service dependency-injection-provider",
+  "author": [
+    {
+      "name": "Christian Blaschke",
+      "email": "mail@platdesign.de",
+      "url": "https://github.com/platdesign"
+    }
+  ],
+  "version": "0.0.0",
+  "dependencies": {},
+  "repository": "",
+  "devDependencies": {
+    "code": "^4.1.0",
+    "hapi": "^16.5.2",
+    "mocha": "^3.5.0",
+    "npm-release": "^1.0.0",
+    "nyc": "^11.1.0"
+  },
+  "scripts": {
+    "test": "nyc mocha",
+    "test:w": "mocha -w",
+    "release:patch": "npm run coverage && git commit -a -m \"Prepare for build\" && npm-release patch",
+    "coverage": "mkdir -p .nyc_output && npm run test && nyc report --reporter=html"
+  }
+}
