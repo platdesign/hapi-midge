@@ -2,3 +2,5 @@ node_modules
 coverage
 test
 .nyc_output
+README.md
+.editorconfig
