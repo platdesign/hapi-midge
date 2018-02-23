@@ -3,30 +3,24 @@
 
 const Provider = require('./lib/provider');
 
+module.exports = {
+	name: 'midge',
+	async register(server options) {
 
+		const provider = new Provider(options.defaults);
 
-const plugin = module.exports = function(server, options, next) {
+		server.decorate('server', 'services', provider);
 
-	const provider = new Provider(options.defaults);
+		server.handler('inject', function(route, factory) {
+			return function(req, h) {
+				return provider.invoke(factory, {
+					$payload: req.payload,
+					$params: req.params,
+					$query: req.query,
+					$req: req
+				});
+			};
+		});
 
-	server.decorate('server', 'services', provider);
-
-	server.handler('inject', function(route, factory) {
-		return function(req, reply) {
-			reply(provider.invoke(factory, {
-				$payload: req.payload,
-				$params: req.params,
-				$query: req.query,
-				$req: req
-			}));
-		};
-	});
-
-	next();
-};
-
-
-
-plugin.attributes = {
-	name: 'midge'
-};
+	}
+}
