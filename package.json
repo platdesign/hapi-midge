@@ -22,6 +22,7 @@
     "test": "nyc mocha",
     "test:w": "mocha -w",
     "release:patch": "npm run coverage && git commit -a -m \"Prepare for build\" && npm-release patch",
+    "release:major": "npm run coverage && git commit -a -m \"Prepare for build\" && npm-release major",
     "coverage": "mkdir -p .nyc_output && npm run test && nyc report --reporter=html"
   }
 }
