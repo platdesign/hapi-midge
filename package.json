@@ -13,7 +13,7 @@
   "repository": "",
   "devDependencies": {
     "code": "^4.1.0",
-    "hapi": "^16.5.2",
+    "hapi": "^17.2.0",
     "mocha": "^3.5.0",
     "npm-release": "^1.0.0",
     "nyc": "^11.1.0"

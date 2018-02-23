@@ -15,7 +15,6 @@ describe('Midge-Plugin:', () => {
 	beforeEach(() => {
 
 		server = new Hapi.Server();
-		server.connection();
 		server.register(Plugin);
 
 	});
